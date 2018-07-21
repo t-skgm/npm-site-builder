@@ -10,8 +10,11 @@
   "license": "ISC",
   "devDependencies": {
     "autoprefixer": "^9.0.0",
+    "concurrently": "^3.6.0",
     "ejs-cli": "^2.0.1",
-    "postcss-cli": "^6.0.0"
+    "nodemon": "^1.18.3",
+    "postcss-cli": "^6.0.0",
+    "watchify": "^3.11.0"
   },
   "dependencies": {}
 }
