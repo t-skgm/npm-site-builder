@@ -4,7 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "ejs": "ejs-cli --base-dir src/ejs '*.ejs' --out dist/",
+    "build:sass": "node-sass --include-path scss src/css/style.scss dist/css/style.css",
+    "build:ejs": "ejs-cli --base-dir src/ejs '*.ejs' --out dist/",
+    "watch:sass": "node-sass --watch --include-path scss src/css/style.scss dist/css/style.css",
+    "watch:ejs": "nodemon --ext ejs --watch src --exec 'npm run build:ejs'",
+    "watch:js": "watchify --entry src/js/app.js --outfile dist/js/bundle.js --verbose",
+    "start": "concurrently \"npm:watch:ejs\" \"npm:watch:sass\" \"npm:watch:js\"",
+    "build": "",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
