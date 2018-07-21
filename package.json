@@ -4,8 +4,30 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build:sass": "node-sass --include-path scss src/css/ -o dist/css/ compressed",
+    "build:autoprefixer": "postcss --use autoprefixer --no-map dist/css/style.css -d dist/css/",
+    "build:ejs": "ejs-cli --base-dir src '*.ejs' --out dist/",
+    "build:babel": "babel src/ -d dist/",
+    "watch:sass": "node-sass --include-path scss src/css/ -o dist/css/ --watch",
+    "watch:ejs": "nodemon --ext ejs --watch src --exec 'npm run build:ejs'",
+    "watch:js": "watchify src/js/app.js -o dist/js/bundle.js -v",
+    "server": "http-server ./dist/ -p 8080",
+    "start": "concurrently \"npm:server\" \"npm:watch:*\"",
+    "build": "concurrently \"npm run build:sass && npm run build:autoprefixer\" \"npm:build:babel\" \"npm:build:ejs\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^9.0.0",
+    "babel-cli": "^6.26.0",
+    "concurrently": "^3.6.0",
+    "ejs-cli": "^2.0.1",
+    "http-server": "^0.11.1",
+    "node-sass": "^4.9.2",
+    "nodemon": "^1.18.3",
+    "postcss-cli": "^6.0.0",
+    "watchify": "^3.11.0"
+  },
+  "dependencies": {}
 }
