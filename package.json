@@ -10,6 +10,7 @@
   "license": "ISC",
   "devDependencies": {
     "autoprefixer": "^9.0.0",
+    "ejs-cli": "^2.0.1",
     "postcss-cli": "^6.0.0"
   },
   "dependencies": {}
